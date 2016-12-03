@@ -1,7 +1,13 @@
 function req(){
 	var xhr = new XMLHttpRequest();
 	var loc = document.location.pathname;
-	var list = 'verif.php|' + '.' + loc.substring(loc.lastIndexOf('/'));
+	var watch;
+	if(loc.substring(loc.lastIndexOf('/')) === "/"){
+		watch = '/index.html';
+	} else {
+		watch = loc.substring(loc.lastIndexOf('/'));
+	}
+	var list = './js/JQapp.js|./css/style.css|' + '.' + watch;
 	xhr.open('GET', 'verif.php?watch=' + list);
 	xhr.send(null);
 		xhr.addEventListener('readystatechange', function() {
